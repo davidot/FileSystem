@@ -28,8 +28,11 @@ public class TextFileReader {
 	public String getData() throws IOException{
 		if(!fileExist) throw new IOException("Missing file or error by david");
 		InputStream in = new FileInputStream(file);
-		byte[] b = new byte[in.available()];
-		in.read(b);
+		int length = in.available();
+		byte[] b = new byte[length];
+		if(in.read(b)!=length){
+			System.out.println("Did not read everything");
+		}
 		in.close();
 		return new String(b);
 	}
@@ -39,9 +42,7 @@ public class TextFileReader {
 		data = data.replaceAll(" ", "").replaceAll("\r\n", "\n");
 		return data.split("\n");
 	}
-	
-	
-	
+		
 	public void tryFile(){
 		fileExist = file.exists();
 	}
