@@ -1,6 +1,7 @@
 package com.david.fileSystem;
 
 import java.io.IOException;
+import java.util.List;
 
 public class SaveFile{
 
@@ -11,7 +12,7 @@ public class SaveFile{
 		textFile = file;
 	}
 	
-	public void save(IWriteable[] data) throws IOException{
+	public void save(List<IWriteable> data) throws IOException{
 		String save = "";
 		for(IWriteable w : data){
 			save +=w.toWrite();
@@ -19,14 +20,11 @@ public class SaveFile{
 		textFile.override(save);
 	}
 	
-	public void load(IWriteable[] load, int x) throws IOException {
+	public void load(List<IWriteable> empty) throws IOException {
 		String[] lines = textFile.getLines();
-		if(lines.length>load.length) return;
-		for (int i = 0; i < lines.length; i++) {
-			load[i].fromRead(lines[i]);
+		for (int i = 0; i < (lines.length>empty.size() ? empty.size() : lines.length ); i++) {
+			empty.get(i).fromRead(lines[i]);
 		}
 	}
-	
-	
 	
 }
