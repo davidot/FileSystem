@@ -9,10 +9,12 @@ public class TextFileWriter {
 
 	File file;
 	private boolean direc;
+	private boolean create;
 	
-	public TextFileWriter(File f){
+	public TextFileWriter(File f, boolean create){
 		file = f;
 		direc = file.isDirectory();
+		this.create = create;
 	}
 	
 	public void write(byte[] b) throws IOException{
@@ -24,7 +26,7 @@ public class TextFileWriter {
 	}
 	
 	public void tryFile() throws IOException {
-		if(!file.exists()&&!direc){
+		if(!file.exists()&&!direc&&create){
 			file.createNewFile();
 		}
 	}

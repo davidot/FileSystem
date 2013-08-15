@@ -2,7 +2,6 @@ package com.david.fileSystem;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -25,7 +24,7 @@ public class TextFileReader {
 		tryFile();
 	}
 	
-	public String getData() throws IOException{
+	public byte[] getData() throws IOException{
 		if(!fileExist) throw new IOException("Missing file or error by david");
 		InputStream in = new FileInputStream(file);
 		int length = in.available();
@@ -34,11 +33,15 @@ public class TextFileReader {
 			System.out.println("Did not read everything");
 		}
 		in.close();
-		return new String(b);
+		return b;
+	}
+	
+	public String getDataString() throws IOException{
+		return new String(getData());
 	}
 	
 	public String[] getLines() throws IOException{
-		String data = getData();
+		String data = getDataString();
 		data = data.replaceAll(" ", "").replaceAll("\r\n", "\n");
 		return data.split("\n");
 	}
