@@ -17,7 +17,7 @@ public class TextFileWriter {
 		this.create = create;
 	}
 	
-	public void write(byte[] b) throws IOException{
+	public void write(byte[] b) throws IOException {
 		tryFile();
 		if(direc) throw new IOException("This is a directory");
 		OutputStream out = new FileOutputStream(file);
@@ -25,14 +25,15 @@ public class TextFileWriter {
 		out.close();
 	}
 	
+	public void write(String s) throws IOException {
+		write(s.getBytes());
+	}
+
 	public void tryFile() throws IOException {
 		if(!file.exists()&&!direc&&create){
 			file.createNewFile();
 		}
 	}
 
-	public void write(String s) throws IOException{
-		write(s.getBytes());
-	}
 	
 }

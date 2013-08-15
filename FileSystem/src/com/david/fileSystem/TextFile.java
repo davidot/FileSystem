@@ -11,22 +11,35 @@ public class TextFile {
 	private TextFileReader reader;
 	private byte[] initData;
 	
-	public TextFile(String s){
+	public TextFile(String s) {
 		this(new File(s),true);
 	}
 	
-	public TextFile(URL s){
+	public TextFile(URL s) {
 		this(new File(s.getFile()),true);
 	}
 	
+	public TextFile(String s, boolean c) {
+		this(new File(s),c);
+	}
 	
-	public TextFile(File f, boolean cr){
+	public TextFile(URL s,boolean c) {
+		this(new File(s.getFile()),c);
+	}
+	
+	public TextFile(File f){
+		this(f,true);
+	}
+	
+	
+	public TextFile(File f, boolean cr) {
+		System.out.println(f.getAbsolutePath());
 		file = f;
 		writer = new TextFileWriter(file,cr);
 		reader = new TextFileReader(file);
 	}
 	
-	private void getBytes() throws IOException{
+	private void getBytes() throws IOException {
 		initData = reader.getData();
 	}
 	
@@ -55,7 +68,7 @@ public class TextFile {
 		writer.write(s);
 	}
 	
-	public byte[] readData() throws IOException{
+	public byte[] readData() throws IOException {
 		return reader.getData();
 	}
 	

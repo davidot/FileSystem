@@ -1,8 +1,7 @@
 package com.david.fileSystem;
 
-public interface IWriteable {
+public interface IWriteable<E> {
 
-	public String toWrite();
-	
-	public void fromRead(String s);
+	public TextTransformer<E> getTransformer();
+
 }

@@ -11,20 +11,20 @@ public class TextFileReader {
 	private File file;
 	private boolean fileExist;
 	
-	public TextFileReader(URL path){
+	public TextFileReader(URL path) {
 		this(new File(path.getFile()));
 	}
 	
-	public TextFileReader(String path){
+	public TextFileReader(String path) {
 		this(new File(path));
 	}
 	
-	public TextFileReader(File f){
+	public TextFileReader(File f) {
 		file = f;
 		tryFile();
 	}
 	
-	public byte[] getData() throws IOException{
+	public byte[] getData() throws IOException {
 		if(!fileExist) throw new IOException("Missing file or error by david");
 		InputStream in = new FileInputStream(file);
 		int length = in.available();
@@ -36,17 +36,17 @@ public class TextFileReader {
 		return b;
 	}
 	
-	public String getDataString() throws IOException{
+	public String getDataString() throws IOException {
 		return new String(getData());
 	}
 	
-	public String[] getLines() throws IOException{
+	public String[] getLines() throws IOException {
 		String data = getDataString();
 		data = data.replaceAll(" ", "").replaceAll("\r\n", "\n");
 		return data.split("\n");
 	}
 		
-	public void tryFile(){
+	public void tryFile() {
 		fileExist = file.exists();
 	}
 	
