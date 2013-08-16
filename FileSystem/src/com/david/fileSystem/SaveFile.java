@@ -37,7 +37,7 @@ public class SaveFile<E>{
 	}
 	
 	public List<E> load() throws IOException {
-		String[] lines = textFile.getLines();
+		String[] lines = textFile.readLines();
 		List<E> data = new ArrayList<E>();
 		for (int i = 0; i < lines.length; i++) {
 			data.add(transformer.fromRead(lines[i]));
