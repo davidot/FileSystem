@@ -1,6 +1,9 @@
 package com.david.fileSystem;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Example {
 
@@ -45,7 +48,7 @@ public class Example {
 		File f = new File("fileExample.txt");
 		
 		//The in class method
-		SaveFile<Example> save1 = new SaveFile<Example>(f,
+		SaveFile<Example> save = new SaveFile<Example>(f,
 				new Example(0).new ExampleTransformerInClass());
 		
 		//The own class method
@@ -63,6 +66,36 @@ public class Example {
 				return new Example(Integer.parseInt(s));
 			}
 		});
+		
+		//Making a list to hold variable to write
+		List<Example> toWrite = new ArrayList<Example>();
+		//adding values to the list
+		toWrite.add(new Example(1));toWrite.add(new Example(2));
+		toWrite.add(new Example(3));toWrite.add(new Example(4));
+		toWrite.add(new Example(5));toWrite.add(new Example(6));
+		toWrite.add(new Example(7));
+		//Writing toWrite to disk
+		try{
+			save.save(toWrite);
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		//Creating a list to read to
+		List<Example> read = new ArrayList<Example>();
+		//Save.load returns a list which you can all add with the addAll method
+		try{
+			read.addAll(save.load());
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		/*
+		 * Save1, Save2, Save3 are the same only thing differs is there
+		 * transformer
+		 * 
+		 * There is also a method with an integrated try and catch just the
+		 * method succes behind it and the saveSucces returns true if the
+		 * operation was a succes
+		 */
 
 	}
 	

@@ -44,6 +44,19 @@ public class SaveFile<E>{
 		}
 		return data;
 	}
+		
+	public boolean saveSucces(List<E> data) {
+		try {
+			save(data);
+			return true;
+		} catch(IOException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 	
+	public boolean fileExsist(){
+		return textFile.exists;
+	}
 	
 }
