@@ -2,6 +2,7 @@ package com.david.fileSystem;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,16 +11,23 @@ public class SaveFile<E>{
 	TextFile textFile;
 	TextTransformer<E> transformer;
 	
+	public SaveFile(URL path, TextTransformer<E> transformer) {
+		this(new File(path.getFile()), transformer);
+	}
+
+	public SaveFile(String path, TextTransformer<E> transformer) {
+		this(new File(path), transformer);
+	}
+
 	public SaveFile(File f, TextTransformer<E> transformer) {
-		this(new TextFile(f));
+		this(new TextFile(f), transformer);
+	}
+
+	public SaveFile(TextFile f, TextTransformer<E> transformer) {
+		textFile = f;
 		this.transformer = transformer;
 	}
-	
-		
-	public SaveFile(TextFile file) {
-		textFile = file;
-	}
-	
+
 	public void save(List<E> data) throws IOException {
 		String save = "";
 		for(E w : data){
@@ -29,13 +37,10 @@ public class SaveFile<E>{
 	}
 	
 	public List<E> load() throws IOException {
-		System.out.println(textFile.readText());
 		String[] lines = textFile.getLines();
-		System.out.println(lines.length);
 		List<E> data = new ArrayList<E>();
 		for (int i = 0; i < lines.length; i++) {
 			data.add(transformer.fromRead(lines[i]));
-			System.out.println(lines[i]);
 		}
 		return data;
 	}
