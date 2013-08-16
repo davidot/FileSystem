@@ -8,8 +8,8 @@ import java.util.List;
 
 public class SaveFile<E>{
 
-	TextFile textFile;
-	TextTransformer<E> transformer;
+	private TextFile textFile;
+	private TextTransformer<E> transformer;
 	
 	public SaveFile(URL path, TextTransformer<E> transformer) {
 		this(new File(path.getFile()), transformer);
@@ -56,7 +56,11 @@ public class SaveFile<E>{
 	}
 	
 	public boolean fileExsist(){
-		return textFile.exists;
+		return getTextFile().getExists();
+	}
+	
+	public TextFile getTextFile() {
+		return textFile;
 	}
 	
 }

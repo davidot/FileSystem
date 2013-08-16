@@ -9,7 +9,6 @@ import java.net.URL;
 public class TextFileReader {
 
 	private File file;
-	protected boolean fileExists;
 	
 	public TextFileReader(URL path) {
 		this(new File(path.getFile()));
@@ -21,11 +20,10 @@ public class TextFileReader {
 	
 	public TextFileReader(File f) {
 		file = f;
-		tryFile();
 	}
 	
 	public byte[] getData() throws IOException {
-		if (!fileExists)
+		if (!file.exists())
 			throw new IOException("Missing file or error by david");
 		InputStream in = new FileInputStream(file);
 		int length = in.available();
@@ -46,9 +44,9 @@ public class TextFileReader {
 		data = data.replaceAll(" ", "").replaceAll("\r\n", "\n");
 		return data.split("\n");
 	}
-		
-	public void tryFile() {
-		fileExists = file.exists();
+
+	public boolean getExists() {
+		return file.exists();
 	}
 	
 }

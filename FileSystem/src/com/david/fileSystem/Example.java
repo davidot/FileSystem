@@ -83,7 +83,7 @@ public class Example {
 		//Creating a list to read to
 		List<Example> read = new ArrayList<Example>();
 		//Save.load returns a list which you can all add with the addAll method
-		try{
+		try {
 			read.addAll(save.load());
 		} catch(IOException e) {
 			e.printStackTrace();
@@ -96,7 +96,23 @@ public class Example {
 		 * method succes behind it and the saveSucces returns true if the
 		 * operation was a succes
 		 */
+		 boolean succes = save.saveSucces(toWrite);
+		/*
+		 * You can still get the lines or string or the bytes of the file using
+		 * the textfile which you can get with the getter
+		*/
 
+		try {
+			if (!save2.getTextFile().readText()
+					.equalsIgnoreCase(save3.getTextFile().readText())
+					|| !succes) {
+				// something is wrong if this is reached
+				throw new Error("What is going on right now this is awful");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		 
 	}
 	
 	

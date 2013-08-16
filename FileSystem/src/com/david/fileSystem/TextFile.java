@@ -10,7 +10,6 @@ public class TextFile {
 	private TextFileWriter writer;
 	private TextFileReader reader;
 	private byte[] initData;
-	protected boolean exists;
 	
 	public TextFile(String s) {
 		this(new File(s),true);
@@ -38,8 +37,6 @@ public class TextFile {
 		file = f;
 		writer = new TextFileWriter(file,cr);
 		reader = new TextFileReader(file);
-		reader.tryFile();
-		exists = reader.fileExists;
 	}
 	
 	private void getBytes() throws IOException {
@@ -79,7 +76,7 @@ public class TextFile {
 		return reader.getDataString();
 	}
 	
-	public String[] getLines() throws IOException {
+	public String[] readLines() throws IOException {
 		return reader.getLines();
 	}
 	
@@ -99,6 +96,10 @@ public class TextFile {
 	 */
 	public TextFileReader getReader() {
 		return reader;
+	}
+
+	public boolean getExists() {
+		return reader.getExists();
 	}
 	
 }
