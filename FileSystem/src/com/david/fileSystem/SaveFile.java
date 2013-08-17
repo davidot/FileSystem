@@ -55,6 +55,15 @@ public class SaveFile<E>{
 		}
 	}
 	
+	public List<E> loadSucces() {
+		try {
+			return load();
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
 	public boolean fileExsist(){
 		return getTextFile().getExists();
 	}
