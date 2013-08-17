@@ -1,4 +1,4 @@
-package com.david.fileSystem;
+package com.david.fileSystem.textFile;
 
 import java.io.File;
 import java.io.FileOutputStream;

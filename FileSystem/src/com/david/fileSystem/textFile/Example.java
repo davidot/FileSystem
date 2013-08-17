@@ -1,4 +1,4 @@
-package com.david.fileSystem;
+package com.david.fileSystem.textFile;
 
 import java.io.File;
 import java.io.IOException;
@@ -95,6 +95,9 @@ public class Example {
 		 * There is also a method with an integrated try and catch just the
 		 * method succes behind it and the saveSucces returns true if the
 		 * operation was a succes
+		 * 
+		 * There is also a loadSucces method but that doesn't return a boolean
+		 * because it returns the list
 		 */
 		 boolean succes = save.saveSucces(toWrite);
 		/*

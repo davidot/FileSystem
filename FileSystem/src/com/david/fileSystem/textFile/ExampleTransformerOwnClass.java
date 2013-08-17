@@ -1,4 +1,4 @@
-package com.david.fileSystem;
+package com.david.fileSystem.textFile;
 
 public class ExampleTransformerOwnClass implements TextTransformer<Example> {
 
