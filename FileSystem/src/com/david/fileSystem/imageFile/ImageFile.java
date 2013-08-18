@@ -1,5 +1,6 @@
 package com.david.fileSystem.imageFile;
 
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -28,5 +29,8 @@ public class ImageFile {
 		return data;
 	}
 
+	public void override(Image img) throws IOException {
+		writer.write(img);
+	}
 
 }

@@ -48,5 +48,9 @@ public class TextFileReader {
 	public boolean getExists() {
 		return file.exists();
 	}
+
+	public String getPath() {
+		return file.getAbsolutePath();
+	}
 	
 }

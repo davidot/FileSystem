@@ -35,5 +35,8 @@ public class TextFileWriter {
 		}
 	}
 
+	public String getPath() {
+		return file.getAbsolutePath();
+	}
 	
 }

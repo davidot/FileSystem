@@ -1,6 +1,7 @@
 package com.david.fileSystem.imageFile;
 
-import java.awt.image.BufferedImage;
+import java.awt.Image;
+import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.IOException;
 
@@ -14,8 +15,8 @@ public class ImageFileWriter {
 		file = f;
 	}
 
-	public void write(BufferedImage img) throws IOException {
-		ImageIO.write(img, ".png", file);
+	public void write(Image img) throws IOException {
+		ImageIO.write((RenderedImage) img, ".png", file);
 	}
 
 }
