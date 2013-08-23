@@ -8,7 +8,7 @@ import java.io.OutputStream;
 public class TextFileWriter {
 
 	File file;
-	private boolean direc;
+	public boolean direc;
 	private boolean create;
 	
 	public TextFileWriter(File f, boolean create){
@@ -30,7 +30,7 @@ public class TextFileWriter {
 	}
 
 	public void tryFile() throws IOException {
-		if(!file.exists()&&!direc&&create){
+		if ((!direc) && (!file.exists()) && create) {
 			file.createNewFile();
 		}
 	}
