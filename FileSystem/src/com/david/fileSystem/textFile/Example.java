@@ -24,7 +24,8 @@ public class Example {
 	/*
 	 This class is used to preform the operation from and to a string of a object
 																\/ is your object*/
-	class ExampleTransformerInClass implements TextTransformer<Example> {
+	public static class ExampleTransformerInClass implements
+			TextTransformer<Example> {
 	
 		public String toWrite(Example e) {
 			return String.valueOf(e.getValue());
@@ -49,7 +50,7 @@ public class Example {
 		
 		//The in class method
 		SaveFile<Example> save = new SaveFile<Example>(f,
-				new Example(0).new ExampleTransformerInClass());
+				new Example.ExampleTransformerInClass());
 		
 		//The own class method
 		SaveFile<Example> save2 = new SaveFile<Example>(f,
@@ -70,9 +71,12 @@ public class Example {
 		//Making a list to hold variable to write
 		List<Example> toWrite = new ArrayList<Example>();
 		//adding values to the list
-		toWrite.add(new Example(1));toWrite.add(new Example(2));
-		toWrite.add(new Example(3));toWrite.add(new Example(4));
-		toWrite.add(new Example(5));toWrite.add(new Example(6));
+		toWrite.add(new Example(1));
+		toWrite.add(new Example(2));
+		toWrite.add(new Example(3));
+		toWrite.add(new Example(4));
+		toWrite.add(new Example(5));
+		toWrite.add(new Example(6));
 		toWrite.add(new Example(7));
 		//Writing toWrite to disk
 		try{
@@ -100,6 +104,7 @@ public class Example {
 		 * because it returns the list
 		 */
 		 boolean succes = save.saveSucces(toWrite);
+
 		/*
 		 * You can still get the lines or string or the bytes of the file using
 		 * the textfile which you can get with the getter
