@@ -33,7 +33,6 @@ public class TextFile {
 	
 	
 	public TextFile(File f, boolean cr) {
-		System.out.println(f.getAbsolutePath());
 		file = f;
 		writer = new TextFileWriter(file,cr);
 		reader = new TextFileReader(file);
